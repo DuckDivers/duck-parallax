@@ -8,6 +8,9 @@
 	License:           GNU General Public License v3
 	License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 	Domain Path:       /languages
+	GitHub Plugin URI: https://github.com/DuckDivers/duck-parallax
+	GitHub Branch:     master	
+
  */
 
 if ( ! defined( 'ABSPATH' ) )
