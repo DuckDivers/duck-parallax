@@ -1,0 +1,17 @@
+/* CSS Document */
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
+section.parallax-section {
+	width: 100%;
+	width: 100vw;
+	position: relative;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+	max-width: 100%;
+}
