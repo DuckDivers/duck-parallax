@@ -26,7 +26,6 @@ function register_plugin_scripts() {
 		wp_register_script ('duck-parallax', plugins_url ('duck-parallax/js/parallax.min.js'), array('jquery'), '1.0', true);
 		wp_enqueue_script('duck-parallax');
 		wp_register_script ('duck-parallax-custom', plugins_url ('duck-parallax/js/duck-parallax.js'), array('jquery'), '1.0', true);
-		//wp_enqueue_script('duck-parallax-custom');
 		wp_enqueue_style('duck-parallax-style', plugins_url('duck-parallax/css/duck-parallax.css'));
 }
 
