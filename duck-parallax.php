@@ -4,7 +4,7 @@
   	Plugin URI: https://www.duckdiverllc.com/
   	Version: 1.0
   	Author: Howard Ehrenberg
-  	Description: A Simple plugin to employ the parallax.js script tested with Wordpress default themes and bootstrap based theme.
+  	Description: A Simple plugin to employ the parallax.js script tested with Wordpress default themes and bootstrap based theme. Basic usage is the [duck-parallax] shortcode, see the readme.md for more details
 	License:           GNU General Public License v3
 	License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 	Domain Path:       /languages
