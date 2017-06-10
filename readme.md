@@ -4,7 +4,7 @@ Available on the WordPress Plugin Repository at https://wordpress.org/plugins/pa
 
 Insert a full width parallax image into your page with this simple shortcode. Parameters allow for setting several key functions like height
 
-== Description ==
+## Description
 
 This is a simple parallax image plugin that uses the parallax.js script by pixelcog - http://pixelcog.github.io/parallax.js/ 
 
@@ -12,11 +12,13 @@ To insert your full width parallax image, simply use the [dd-parallax] shortcode
 
 For example:
 
-`[dd-parallax img="imagename.jpg" height="600" speed="3" z-index="-100" mobile="mobile-image.jpg"] 
+```
+[dd-parallax img="imagename.jpg" height="600" speed="3" z-index="-100" mobile="mobile-image.jpg"] 
 
 Text to be overlaid on the paralllax window
 
-[/dd-parallax]`
+[/dd-parallax]
+```
 
 Available parameters for use:
 
@@ -26,29 +28,29 @@ Available parameters for use:
 * z-index [optional] (defulat = 0) - The z-index value of the fixed-position elements. By default these will be behind everything else on the page.
 * mobile [optional] - If you want a mobile fixed image for mobile display, choose a different image, otherwise it will select the full sized image from the parallax and make it a responsive image.
 
-== Demo ==
+### Demo
 
 View a demo of this plugin [here](https://www.duckdiverllc.com/parallax-image-plugin-demo/)
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= I'm not seeing the image on the screen, what did I do wrong? =
+1. I'm not seeing the image on the screen, what did I do wrong?
 
-For this - there are 2 probable reasons that you're not seeing the parallax.
+	For this - there are 2 probable reasons that you're not seeing the parallax.
 	* First - Check to make sure that your img is only the file name, and not the full path.  If you view the media library in "list" mode yourdomain.com/wp-admin/upload.php?mode=list - there you'll see the filename with the .jpg or .png extension.
 	* Second - If not the first answer.  Check your z-index.  Changing the z-index will adjust the layering of your screen with CSS, and may need to be changed depending on how your theme displays the backgrounds and colors.  For more about z-index - [w3schools](https://www.w3schools.com/cssref/pr_pos_z-index.asp)
 
-= Can I have multiple parallax images on each page. =
+2. Can I have multiple parallax images on each page. =
 
-Yes
+	Yes
 
-= Will this work on mobile devices =
+3. Will this work on mobile devices =
 
-For mobile devices, you can either have a totally separate mobile image by using the ‘mobile’ parameter in the shortcode, or you can just have the main parallax image resize itself and be responsive.
+	For mobile devices, you can either have a totally separate mobile image by using the ‘mobile’ parameter in the shortcode, or you can just have the main parallax image resize itself and be responsive.
 
-= While I’m debugging, the mobile test doesn’t look right = 
+4. While I’m debugging, the mobile test doesn’t look right = 
 
-If you’re resizing your browser window to check for responsiveness, the plugin uses mobile_detect, so you must either spoof your user agent, or test on a real mobile device.  You might have to refresh for it to work right.
+	If you’re resizing your browser window to check for responsiveness, the plugin uses mobile_detect, so you must either spoof your user agent, or test on a real mobile device.  You might have to refresh for it to work right.
 	
 == Installation ==
 
