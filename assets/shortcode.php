@@ -1,13 +1,43 @@
 <?php
 
+// Check if Mobile_Detect is already included
+
+if (!class_exists('Mobile_Detect')) {
+	require_once 'mobile_detect.php';
+}
+
+add_action( 'wp_enqueue_scripts', 'DuckParallaxScripts' );
+
+/**
+ * Register style sheet and scripts.
+ */
+function DuckParallaxScripts() {
+	wp_register_script ('duck-parallax', plugins_url('/js/parallax.min.js' ,  __FILE__), array('jquery'), '1.0', true);
+    wp_register_style( 'duck-parallax', plugins_url('/css/duck-parallax.css',  __FILE__ ));
+}
+
+// The Shortcode 
+
 function duck_parallax_shortcode($atts, $content = null){
+
 	$atts = shortcode_atts(
 		array(
 			'img' => '',
-			'speed' => '0',
+			'speed' => '2',
 			'height' => '',
+			'z-index' => '0',
+			'mobile' => ''
 		), $atts, 'duck-parallax' );
-		
+
+/* Enqueue only for shortcode */ 
+	wp_enqueue_script('duck-parallax');
+	wp_enqueue_style('duck-parallax');
+	
+// Detect Mobile
+	$detect = new Mobile_Detect;
+	if (!$atts['mobile']){
+		$atts['mobile'] = $atts['img'];
+	}
 	if ( !$atts['img']) {
       return;
     }
@@ -24,8 +54,12 @@ function duck_parallax_shortcode($atts, $content = null){
     if ( $query_images->have_posts() ) {
       foreach ( $query_images->posts as $item) { 
         $filename = wp_basename($item->guid);
-        if($atts['img'] == $filename) $image_url = $item->guid;
-      }
+        if($atts['img'] == $filename) $image_url = $item->guid;	
+		if($atts['mobile'] == $filename) {
+			$mobile_img = $item->guid;
+			$image_path = get_attached_file( $item->ID);
+			}
+     	}
     }
 
 	if ($atts['speed'] < 10) {
@@ -34,21 +68,41 @@ function duck_parallax_shortcode($atts, $content = null){
 	else {
 		$speed = 1;
 	}
+	$zindex = $atts['z-index'];
 
     wp_reset_postdata(); 
-		$output = '<section class="parallax-section">';
-		$output .= '<div class="parallax-window" data-z-index="1" data-position="left" data-parallax="scroll" data-speed="'.$speed.'" data-image-src="'.$image_url.'"';
-		
-		if ($atts['height'] !== ''){
-			$output .= 'style="min-height: '.$atts['height'].'px">';
-			}
-		else { $output .='>';
-		}
-		
-		$output .= '<div class="container-fluid">';
-		$output .= do_shortcode($content);
-		$output .= '</div></div></section>';
-		
-		return $output;
+	
+	list($width, $height) = getimagesize($image_path);
+	$factor = $height / $width;
+	$divID = preg_replace('/\\.[^.\\s]{3,4}$/', '', $atts['img']);
+	if ( $detect->isMobile() ) {
+			
+		$output  ='<div class="px-mobile-container" id="#'.$divID.'" data-factor="'.$factor.'" data-height="'.$height.'"><div class="parallax-mobile">';
+		$output .='<img src="'. $mobile_img .'" class="px-mobile-img" />';
+			$output .= '<div class="parallax-content">';
+			$output .= do_shortcode($content);
+			$output .= '</div>';
+		$output .='</div></div>';
 	}
-add_shortcode('duck-parallax', 'duck_parallax_shortcode');
+	
+	else{
+	
+			$output = '<section class="parallax-section">';
+			$output .= '<div class="parallax-window" data-z-index="'.$zindex.'" data-position="left" data-parallax="scroll" data-speed="'.$speed.'" data-image-src="'.$image_url.'"';
+			
+			if ($atts['height'] !== ''){
+				$output .= ' style="min-height: '.$atts['height'].'px">';
+				}
+			else { $output .='>';
+			}
+			
+			$output .= '<div class="parallax-container parallax-content">';
+			$output .= do_shortcode($content);
+			$output .= '</div></div></section>';
+	
+		}	
+			
+			return $output;
+		
+}
+add_shortcode('dd-parallax', 'duck_parallax_shortcode');
