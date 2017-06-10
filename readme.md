@@ -1,5 +1,7 @@
 # Duck Parallax Shortcode
 
+Available on the WordPress Plugin Repository at https://wordpress.org/plugins/parallax-image/
+
 Insert a full width parallax image into your page with this simple shortcode. Parameters allow for setting several key functions like height
 
 == Description ==
