@@ -22,7 +22,7 @@ Text to be overlaid on the paralllax window
 
 Available parameters for use:
 
-* img - use the filename from the media library for this, not the full path.  Just use imagename.jpg or image.png.
+* img - use the filename from the media library for this, not the full path.  Just use imagename.jpg or image.png. (You can also use a fully qualified URL)
 * height - This is the height of the parallax window. The unit is in pixels.  Just enter a number
 * speed [optional] (default = 2) An integer between 0 and 10.  The speed at which the parallax effect runs. 0 means the image will appear fixed in place, and 10 the image will flow at the same speed as the page content.
 * z-index [optional] (defulat = 0) - The z-index value of the fixed-position elements. By default these will be behind everything else on the page.
@@ -64,6 +64,9 @@ View a demo of this plugin [here](https://www.duckdiverllc.com/parallax-image-pl
 3. A Parallax Window on a bootstrap theme with fullwidth template.
 
 == Changelog ==
+
+= 1.2.1 =
+Add ability to specify img source outside of media library or use full URL.
 
 = 1.2 =
 Added mobile_detect and mobile options to make the image responsive for mobile display and render better on mobile.  Added 'mobile' parameter to the shortcode as an option.
