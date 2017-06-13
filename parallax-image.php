@@ -2,7 +2,7 @@
 /*
   	Plugin Name: Parallax Image
   	Plugin URI: https://www.duckdiverllc.com/parallax-image-plugin/
-  	Version: 1.2
+  	Version: 1.2.1
   	Author: thehowarde
   	Description: A Simple plugin to employ the parallax.js script by pixelcog.  Use the shortcode [dd-parallax] to use.  See readme.txt for complete instructions.
 	License:  GNU General Public License v3
