@@ -50,18 +50,22 @@ function duck_parallax_shortcode($atts, $content = null){
     );
 
     $query_images = new WP_Query( $args );
-
-    if ( $query_images->have_posts() ) {
-      foreach ( $query_images->posts as $item) { 
-        $filename = wp_basename($item->guid);
-        if($atts['img'] == $filename) $image_url = $item->guid;	
-		if($atts['mobile'] == $filename) {
-			$mobile_img = $item->guid;
-			$image_path = get_attached_file( $item->ID);
+	
+	if (strpos($atts['img'], 'http') === 0){
+		$image_url = esc_url($atts['img']);
+	}
+	else {
+		if ( $query_images->have_posts() ) {
+		  foreach ( $query_images->posts as $item) { 
+			$filename = wp_basename($item->guid);
+			if($atts['img'] == $filename) $image_url = $item->guid;	
+			if($atts['mobile'] == $filename) {
+				$mobile_img = $item->guid;
+				$image_path = get_attached_file( $item->ID);
+				}
 			}
-     	}
-    }
-
+		}
+	}
 	if ($atts['speed'] < 10) {
 		$speed = '.'.$atts['speed'];
 	}
