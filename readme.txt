@@ -4,7 +4,7 @@ Donate link: https://www.duckdiverllc.com/parallax-image-plugin/
 Tags: Parallax, Full Screen Parallax, Parallax Window, Parallax Image
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,8 @@ If you’re resizing your browser window to check for responsiveness, the plugin
 3. A Parallax Window on a bootstrap theme with fullwidth template.
 
 == Changelog ==
+= 1.2.1 =
+Add ability to specify img source outside of media library or use full URL.
 
 = 1.2 =
 Added mobile_detect and mobile options to make the image responsive for mobile display and render better on mobile.  Added 'mobile' parameter to the shortcode as an option.
