@@ -13,6 +13,7 @@ add_action( 'wp_enqueue_scripts', 'DuckParallaxScripts' );
  */
 function DuckParallaxScripts() {
 	wp_register_script ('duck-parallax', plugins_url('/js/parallax.min.js' ,  __FILE__), array('jquery'), '1.0', true);
+	wp_register_script ('duck-px-offset', plugins_url('/js/dd-parallax-offset.js' ,  __FILE__), array('jquery'), '1.0', true);
     wp_register_style( 'duck-parallax', plugins_url('/css/duck-parallax.css',  __FILE__ ));
 }
 
@@ -26,12 +27,17 @@ function duck_parallax_shortcode($atts, $content = null){
 			'speed' => '2',
 			'height' => '',
 			'z-index' => '0',
-			'mobile' => ''
+			'mobile' => '',
+			'offset' => false
 		), $atts, 'duck-parallax' );
 
 /* Enqueue only for shortcode */ 
 	wp_enqueue_script('duck-parallax');
 	wp_enqueue_style('duck-parallax');
+
+if ($atts['offset']){
+	wp_enqueue_script('duck-px-offset');
+}
 	
 // Detect Mobile
 	$detect = new Mobile_Detect;

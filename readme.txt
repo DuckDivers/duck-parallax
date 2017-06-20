@@ -4,7 +4,7 @@ Donate link: https://www.duckdiverllc.com/parallax-image-plugin/
 Tags: Parallax, Full Screen Parallax, Parallax Window, Parallax Image
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ To insert your full width parallax image, simply use the [dd-parallax] shortcode
 
 For example:
 
-`[dd-parallax img="imagename.jpg" height="600" speed="3" z-index="-100" mobile="mobile-image.jpg"] 
+`[dd-parallax img="imagename.jpg" height="600" speed="3" z-index="-100" mobile="mobile-image.jpg" offset="true"] 
 
 Text to be overlaid on the paralllax window
 
@@ -29,8 +29,9 @@ Available parameters for use:
 * img - use the filename from the media library for this, not the full path.  Just use imagename.jpg or image.png. (You can also use a fully qualified URL)
 * height - This is the height of the parallax window. The unit is in pixels.  Just enter a number
 * speed [optional] (default = 2) An integer between 0 and 10.  The speed at which the parallax effect runs. 0 means the image will appear fixed in place, and 10 the image will flow at the same speed as the page content.
-* z-index [optional] (defulat = 0) - The z-index value of the fixed-position elements. By default these will be behind everything else on the page.
+* z-index [optional] (default = 0) - The z-index value of the fixed-position elements. By default these will be behind everything else on the page.
 * mobile [optional] - If you want a mobile fixed image for mobile display, choose a different image, otherwise it will select the full sized image from the parallax and make it a responsive image.
+* Offset [default = false] (options: "true" or "false") - This will pull the parallax content all the way to the left of your screen.  You can put the contents into a "container" class if you're using bootstrap or just center the contents for horizontal centering.  On testing with the WordPress 2016 Theme, keep offset at False.  With Bootstrap Themes, I recommend using the "offset='true'" parameter.
 
 == Demo ==
 
@@ -68,6 +69,10 @@ If you’re resizing your browser window to check for responsiveness, the plugin
 3. A Parallax Window on a bootstrap theme with fullwidth template.
 
 == Changelog ==
+
+= 1.3 =
+Added shortcode attribute "offset" to pull contents of Parallax Contents (text overlays) to the left.
+
 = 1.2.1 =
 Add ability to specify img source outside of media library or use full URL.
 
