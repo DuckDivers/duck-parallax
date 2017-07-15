@@ -64,10 +64,10 @@ if ($atts['offset']){
 		if ( $query_images->have_posts() ) {
 		  foreach ( $query_images->posts as $item) { 
 			$filename = wp_basename($item->guid);
-			if($atts['img'] == $filename) $image_url = $item->guid;	
+			if($atts['img'] == $filename) {$image_url = $item->guid;}
 			if($atts['mobile'] == $filename) {
 				$mobile_img = $item->guid;
-				$image_path = get_attached_file( $item->ID);
+				$image_path = get_attached_file($item->ID);
 				}
 			}
 		}
@@ -81,10 +81,16 @@ if ($atts['offset']){
 	$zindex = $atts['z-index'];
 
     wp_reset_postdata(); 
-	
-	list($width, $height) = getimagesize($image_path);
-	$factor = $height / $width;
-	$divID = preg_replace('/\\.[^.\\s]{3,4}$/', '', $atts['img']);
+		if (version_compare(phpversion(), '7', '>')) {
+    		if(extension_loaded('curl')){$curl = true;}
+		}
+		else {$curl = true;}
+	if($curl) {
+		list($width, $height) = getimagesize($image_path);
+		$factor = $height / $width;
+		$divID = preg_replace('/\\.[^.\\s]{3,4}$/', '', $atts['img']);
+		}
+	else {$factor = .4;}
 	if ( $detect->isMobile() ) {
 			
 		$output  ='<div class="px-mobile-container" id="#'.$divID.'" data-factor="'.$factor.'" data-height="'.$height.'"><div class="parallax-mobile">';

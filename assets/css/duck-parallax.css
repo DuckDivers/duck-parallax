@@ -34,3 +34,6 @@ section.parallax-section {
 	left:0;
 	width:100%;
 }
+img.px-mobile-img {
+    max-width: 100%;
+}

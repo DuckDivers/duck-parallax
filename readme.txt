@@ -70,6 +70,9 @@ If you’re resizing your browser window to check for responsiveness, the plugin
 
 == Changelog ==
 
+= 1.4 = 
+Added support for PHP 7 without CURL enabled.
+
 = 1.3 =
 Added shortcode attribute "offset" to pull contents of Parallax Contents (text overlays) to the left.
 
