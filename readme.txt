@@ -4,7 +4,7 @@ Donate link: https://www.duckdiverllc.com/parallax-image-plugin/
 Tags: Parallax, Full Screen Parallax, Parallax Window, Parallax Image
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,7 +71,7 @@ If you’re resizing your browser window to check for responsiveness, the plugin
 == Changelog ==
 
 = 1.4 = 
-Added support for PHP 7 without CURL enabled.
+Fix for mobile image from external URL.
 
 = 1.3 =
 Added shortcode attribute "offset" to pull contents of Parallax Contents (text overlays) to the left.

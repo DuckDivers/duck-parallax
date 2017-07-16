@@ -67,7 +67,7 @@ View a demo of this plugin [here](https://www.duckdiverllc.com/parallax-image-pl
 == Changelog ==
 
 = 1.4 = 
-Added support for PHP 7 without CURL enabled.
+Fix for mobile image from external URL.
 
 = 1.3 =
 Added shortcode attribute "offset" to pull contents of Parallax Contents (text overlays) to the left.

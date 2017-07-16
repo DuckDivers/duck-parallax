@@ -38,16 +38,19 @@ function duck_parallax_shortcode($atts, $content = null){
 if ($atts['offset']){
 	wp_enqueue_script('duck-px-offset');
 }
-	
-// Detect Mobile
-	$detect = new Mobile_Detect;
-	if (!$atts['mobile']){
-		$atts['mobile'] = $atts['img'];
-	}
-	if ( !$atts['img']) {
-      return;
-    }
 
+if ( !$atts['img']) {return;}	
+
+// Detect Mobile
+$detect = new Mobile_Detect;
+
+// If Mobile Image isn't set
+	if ($atts['mobile'] !== ""){
+		$mobile_img = $atts['mobile'];
+	}
+	else {
+		$mobile_img = $atts['img'];
+	}
     $args = array(
         'post_type' => 'attachment',
         'post_mime_type' =>'image',
@@ -65,10 +68,6 @@ if ($atts['offset']){
 		  foreach ( $query_images->posts as $item) { 
 			$filename = wp_basename($item->guid);
 			if($atts['img'] == $filename) {$image_url = $item->guid;}
-			if($atts['mobile'] == $filename) {
-				$mobile_img = $item->guid;
-				$image_path = get_attached_file($item->ID);
-				}
 			}
 		}
 	}
@@ -79,20 +78,29 @@ if ($atts['offset']){
 		$speed = 1;
 	}
 	$zindex = $atts['z-index'];
-
     wp_reset_postdata(); 
-		if (version_compare(phpversion(), '7', '>')) {
-    		if(extension_loaded('curl')){$curl = true;}
-		}
-		else {$curl = true;}
-	if($curl) {
+	if ( $detect->isMobile() ) {
+		
+		if (strpos($mobile_img, 'http') === 0){
+			$image_path = esc_url($mobile_img);
+			}
+			else {
+				if ($query_images->have_posts() ) {
+					foreach ($query_images->posts as $item) {
+						$filename = wp_basename($item->guid);
+							if($mobile_img == $filename) {
+							$mobile_img = $item->guid;
+							$image_path = get_attached_file($item->ID);
+						}
+					}
+				}
+			}
+
 		list($width, $height) = getimagesize($image_path);
 		$factor = $height / $width;
 		$divID = preg_replace('/\\.[^.\\s]{3,4}$/', '', $atts['img']);
-		}
-	else {$factor = .4;}
-	if ( $detect->isMobile() ) {
-			
+
+
 		$output  ='<div class="px-mobile-container" id="#'.$divID.'" data-factor="'.$factor.'" data-height="'.$height.'"><div class="parallax-mobile">';
 		$output .='<img src="'. $mobile_img .'" class="px-mobile-img" />';
 			$output .= '<div class="parallax-content">';
