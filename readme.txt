@@ -5,8 +5,8 @@ Author URI: https://www.howardehrenberg.com
 Donate link: https://www.duckdiverllc.com/parallax-image-plugin/
 Tags: Parallax, Full Screen Parallax, Parallax Window, Parallax Image
 Requires at least: 4.5
-Tested up to: 4.8.1
-Stable tag: 1.4.1
+Tested up to: 5.2
+Stable tag: 1.6.1
 Requires PHP: 5.4
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -18,6 +18,9 @@ Insert a full width parallax image into your page with this simple shortcode. Pa
 This is a simple parallax image plugin that uses the parallax.js script by pixelcog - http://pixelcog.github.io/parallax.js/ 
 
 To insert your full width parallax image, simply use the [dd-parallax] shortcode.  Include text to be overlaid on the parallax between the open and close [/dd-parallax] code.  This plugin has been tested with Wordpress 2014, 2015, 2016, and 2017 themes as well as a few themes that use Bootstrap.  I can't guarantee that it will work with all themes, but it's worth a shot.
+
+** Please note for WP 5.0 **
+Currently this plugin works, but the TinyMCE button only works with the classic editor.  A Gutenberg widget is in the works.
 
 For example:
 
@@ -34,7 +37,10 @@ Available parameters for use:
 * speed [optional] (default = 2) An integer between 0 and 10.  The speed at which the parallax effect runs. 0 means the image will appear fixed in place, and 10 the image will flow at the same speed as the page content.
 * z-index [optional] (default = 0) - The z-index value of the fixed-position elements. By default these will be behind everything else on the page.
 * mobile [optional] - If you want a mobile fixed image for mobile display, choose a different image, otherwise it will select the full sized image from the parallax and make it a responsive image.
-* Offset [default = false] (options: "true" or "false") - This will pull the parallax content all the way to the left of your screen.  You can put the contents into a "container" class if you're using bootstrap or just center the contents for horizontal centering.  On testing with the WordPress 2016 Theme, keep offset at False.  With Bootstrap Themes, I recommend using the "offset='true'" parameter.
+* offset [default = false] (options: "true" or "false") - This will pull the parallax content all the way to the left of your screen.  You can put the contents into a "container" class if you're using bootstrap or just center the contents for horizontal centering.  On testing with the WordPress 2016 Theme, keep offset at False.  With Bootstrap Themes, I recommend using the "offset='true'" parameter.
+* position [optional] – (defaults to 'Left') This is analogous to the background-position-x css property. Specify coordinates as right, left, center, or pixel values (e.g. -10px 0px). The parallax image will be positioned as close to these values as possible while still covering the target element.
+
+Admin-Settings page enables or disables the TinyMCE icon (if you don't want it in your WP-Editor)
 
 == Demo ==
 
@@ -72,6 +78,12 @@ If you’re resizing your browser window to check for responsiveness, the plugin
 3. A Parallax Window on a bootstrap theme with fullwidth template.
 
 == Changelog ==
+
+= 1.6 =
+Updated Parallax.js source script to version 1.5 fixes some flickering when placed close to other objects.
+
+= 1.5 =
+Add TinyMCE button and options under settings menu
 
 = 1.4 = 
 Fix for mobile image from external URL.

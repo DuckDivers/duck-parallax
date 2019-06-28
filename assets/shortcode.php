@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', 'DuckParallaxScripts' );
  * Register style sheet and scripts.
  */
 function DuckParallaxScripts() {
-	wp_register_script ('duck-parallax', plugins_url('/js/parallax.min.js' ,  __FILE__), array('jquery'), '1.0', true);
+	wp_register_script ('duck-parallax', plugins_url('/js/parallax.min.js' ,  __FILE__), array('jquery'), '1.4.2', true);
 	wp_register_script ('duck-px-offset', plugins_url('/js/dd-parallax-offset.js' ,  __FILE__), array('jquery'), '1.0', true);
     wp_register_style( 'duck-parallax', plugins_url('/css/duck-parallax.css',  __FILE__ ));
 }
@@ -23,12 +23,13 @@ function duck_parallax_shortcode($atts, $content = null){
 
 	$atts = shortcode_atts(
 		array(
-			'img' => '',
-			'speed' => '2',
-			'height' => '',
-			'z-index' => '0',
-			'mobile' => '',
-			'offset' => false
+			'img' 		=> '',
+			'speed' 	=> '2',
+			'height' 	=> '',
+			'z-index' 	=> '0',
+			'mobile' 	=> '',
+			'position' 	=> 'left',
+			'offset' 	=> false
 		), $atts, 'duck-parallax' );
 
 /* Enqueue only for shortcode */ 
@@ -112,7 +113,7 @@ $detect = new Mobile_Detect;
 	else{
 	
 			$output = '<section class="parallax-section">';
-			$output .= '<div class="parallax-window" data-z-index="'.$zindex.'" data-position="left" data-parallax="scroll" data-speed="'.$speed.'" data-image-src="'.$image_url.'"';
+			$output .= '<div class="parallax-window" data-z-index="'.$zindex.'" data-position-x="'.$atts['position'].'" data-parallax="scroll" data-speed="'.$speed.'" data-image-src="'.$image_url.'"';
 			
 			if ($atts['height'] !== ''){
 				$output .= ' style="min-height: '.$atts['height'].'px">';
