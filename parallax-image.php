@@ -9,7 +9,7 @@
 	Donate link: https://www.duckdiverllc.com/parallax-image-plugin/
 	Tags: Parallax, Full Screen Parallax, Parallax Window, Parallax Image
 	Requires at least: 4.5
-	Tested up to: 5.0
+	Tested up to: 5.2
 	Requires PHP: 5.6
   	Description: A Simple plugin to employ the parallax.js script by pixelcog.  Use the shortcode [dd-parallax] to use.  See readme.txt for complete instructions. 
 	License:  GNU General Public License v3
