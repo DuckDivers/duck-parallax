@@ -1,5 +1,7 @@
 # Duck Parallax Shortcode
 
+[![WP compatibility](https://plugintests.com/plugins/parallax-image/wp-badge.svg)](https://plugintests.com/plugins/parallax-image/latest) [![PHP compatibility](https://plugintests.com/plugins/parallax-image/php-badge.svg)](https://plugintests.com/plugins/parallax-image/latest)
+
 Available on the WordPress Plugin Repository at https://wordpress.org/plugins/parallax-image/
 
 Insert a full width parallax image into your page with this simple shortcode. Parameters allow for setting several key functions like height
